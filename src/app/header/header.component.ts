@@ -1,15 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {UserLogin} from "../data.model";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor(private fBuilder: FormBuilder) {
-  }
+  constructor(private fBuilder: FormBuilder) {}
+
+
+  userLogin: UserLogin = new UserLogin('', '');
 
   connectionForm = this.fBuilder.group({
     userName: ['', [Validators.required]],
@@ -17,10 +20,11 @@ export class HeaderComponent implements OnInit {
   });
 
   submitConnectionForm(): void {
-    console.log('submit')
+    this.userLogin.name = this.connectionForm.value?.userName;
+    this.userLogin.password = this.connectionForm.value?.password;
+    console.log('submit');
   }
 
-  ngOnInit(): void {
-  }
+
 
 }
