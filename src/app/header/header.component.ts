@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fBuilder: FormBuilder) {
+  }
+
+  connectionForm = this.fBuilder.group({
+    userName: ['', [Validators.required]],
+    password: ['', Validators.required]
+  });
+
+  submitConnectionForm(): void {
+    console.log('submit')
+  }
 
   ngOnInit(): void {
   }

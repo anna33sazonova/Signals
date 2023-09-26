@@ -3,7 +3,22 @@
   <div class="nav-links">
   <span class="link">  <a class="description" routerLink="/">Home</a></span>
   <span class="link">  <a class="description" routerLink="/info">Info</a></span>
-    <button class="btn">Log in / Log out</button>
+    <button class="btn" (click)="dialog.showModal()">Log in / Log out</button>
   </div>
-
 </div>
+<dialog #dialog>
+  <p class="title">Sign in</p>
+  <form [formGroup]="connectionForm" (ngSubmit)="submitConnectionForm()">
+    <div class="field">
+      <label>User Name
+        <input type="text" formControlName="userName">
+      </label>
+    </div>
+    <div class="field">
+      <label>Password
+        <input type="text" formControlName="password">
+      </label>
+    </div>
+    <button (click)="dialog.close()">Ok</button>
+  </form>
+</dialog>
