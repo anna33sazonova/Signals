@@ -1,15 +1,17 @@
+import {FormControl} from "@angular/forms";
+
 export interface JwtResponse {
   userName: string;
   token: string
 }
 
-export class UserLogin {
-  name: string | null | undefined;
-  password: string | null | undefined;
+export interface UserLoginForm {
+  name: FormControl<string>;
+  password: FormControl<string>;
+}
 
-  constructor(name: string, password: string) {
-    this.name = name;
-    this.password = password;
-  }
+export interface UserLogin {
+  name: string;
+  password: string;
 }
 

@@ -8,7 +8,6 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
     intercept(req: HttpRequest<any>, next: HttpHandler) {
       const authToken = this.authService.getToken();
-      console.log(authToken);
     req = req.clone({
       setHeaders: {
         Authorization: "Bearer " + authToken

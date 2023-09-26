@@ -11,12 +11,12 @@
   <form [formGroup]="connectionForm" (ngSubmit)="submitConnectionForm()">
     <div class="field">
       <label>User Name
-        <input type="text" formControlName="userName">
+        <input type="text" formControlName="name">
       </label>
     </div>
     <div class="field">
       <label>Password
-        <input type="text" formControlName="password">
+        <input type="password" formControlName="password">
       </label>
     </div>
     <button (click)="dialog.close()">Ok</button>
