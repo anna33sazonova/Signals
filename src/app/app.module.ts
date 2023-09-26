@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { InfoComponent } from './info/info.component';
 import { HeaderComponent } from './header/header.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor} from "./common/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -18,9 +20,16 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
