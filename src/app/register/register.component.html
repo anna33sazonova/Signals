@@ -8,7 +8,6 @@
       <label>Email
         <input formControlName="email" class="form-control"/></label>
     </div>
-
     <div formGroupName="passwordField">
     <div class="form-group">
       <label>Password</label>
@@ -18,8 +17,11 @@
       <label>Confirm Password
       <input type="password" formControlName="confirmPassword" class="form-control"/></label>
     </div>
+      <ng-container *ngIf="registerForm.get('passwordField.confirmPassword')?.invalid && registerForm.get('passwordField.confirmPassword')?.dirty || registerForm.get('passwordField.confirmPassword')?.touched">
+      <ng-container *ngIf="registerForm.get('passwordField')?.errors?.['passwordError']">
+        <p class="a-input-error">{{registerForm.get('passwordField')?.errors?.['passwordError']}}</p>
+      </ng-container></ng-container>
 </div>
-
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Register</button>
       <button type="button" (click)="onReset()" class="btn btn-warning float-right">Reset</button>
