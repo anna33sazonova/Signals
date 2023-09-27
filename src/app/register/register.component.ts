@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -13,10 +13,10 @@ export class RegisterComponent{
   constructor(private formBuilder: FormBuilder) {}
 
   registerForm: FormGroup = this.formBuilder.group({
-    username: ['', Validators.required, Validators.minLength(5), Validators.maxLength(20)],
-    email:  ['', Validators.required, Validators.email] ,
+    username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+    email:  ['', [Validators.required, Validators.email]] ,
     passwordField:this.formBuilder.group({
-      password:  ['', Validators.required, Validators.minLength(5), Validators.maxLength(20)],
+      password:  ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       confirmPassword:['', Validators.required] }, {validators: [Validators.required]})
   });
 
