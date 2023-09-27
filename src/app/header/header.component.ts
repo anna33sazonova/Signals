@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
-import {UserLogin, UserLoginForm} from "../data.model";
+import {UserLoginForm} from "../data.model";
 import {AuthService} from "../common/auth.service";
 import {Router} from "@angular/router";
 

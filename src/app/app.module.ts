@@ -9,13 +9,16 @@ import { HeaderComponent } from './header/header.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./common/auth.interceptor";
+import {RegisterComponent} from "./register/register.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     InfoComponent,
-    HeaderComponent
+    HeaderComponent,
+    RegisterComponent
+
   ],
   imports: [
     BrowserModule,

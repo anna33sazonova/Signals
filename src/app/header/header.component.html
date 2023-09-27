@@ -3,7 +3,13 @@
   <div class="nav-links">
   <span class="link">  <a class="description" routerLink="/">Home</a></span>
   <span class="link">  <a class="description" routerLink="/info">Info</a></span>
-    <button class="btn" (click)="dialog.showModal()">Log in / Log out</button>
+    <!-- display this button for unregistered user -->
+    <span class="link">  <a class="description" routerLink="/register">Sign Up</a></span>
+    <!-- display sign in button for unregistered user
+    display sign out button for signed in user
+    add sing out methode to remove token
+    -->
+    <button class="btn" (click)="dialog.showModal()">Sign in / Sign out</button>
   </div>
 </div>
 <dialog #dialog>
