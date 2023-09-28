@@ -23,9 +23,16 @@
       </ng-container></ng-container>
 </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button type="submit">Register</button>
       <button type="button" (click)="onReset()" class="btn btn-warning float-right">Reset</button>
     </div>
   </form>
 </div>
-
+<!--
+signal - réponse du serveur et message, nouveau user: ok, user existant, erreur, - user  already exists (with the same name/email), l'utilisateur a été bien enregistré
+-->
+<dialog>
+  <div>
+    <p>Your registration is successful</p>
+  </div>
+</dialog>
