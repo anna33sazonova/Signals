@@ -1,6 +1,12 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserLogin} from "../data.model";
+import {Observable} from "rxjs";
+
+const AUTH_API = 'http://localhost:8080/api/auth/';
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +17,18 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public loginUser(userLogin: UserLogin): void {
-    this.httpClient.post<any>('http://localhost:4200/', userLogin).subscribe((jwtResponse: any) => {
-        localStorage.setItem('access_token', JSON.stringify(jwtResponse));
-        // sessionStorage
-    });
+  login(credentials: any): Observable<any> {
+    return this.httpClient.post(AUTH_API + 'signin', {
+      username: credentials.username,
+      password: credentials.password
+    }, httpOptions)
   }
 
-  getToken() {
-    return localStorage.getItem('access_token');
-  }
-
-  logout() {
-    localStorage.removeItem('access_token')
+  register(user: any): Observable<any> {
+    return this.httpClient.post(AUTH_API + 'signup', {
+      username: user.username,
+      email: user.email,
+      password: user.password
+    }, httpOptions);
   }
 }
