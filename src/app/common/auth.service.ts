@@ -14,8 +14,9 @@ const httpOptions = {
 
 export class AuthService {
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
+
+  // todo add types
 
   login(credentials: any): Observable<any> {
     return this.httpClient.post(AUTH_API + 'signin', {
