@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UserLogin} from "../data.model";
+import {UserSignIn, UserSignUpForm} from "../data.model";
 import {Observable} from "rxjs";
 
 const AUTH_API = 'http://localhost:8080/api/auth/';
@@ -18,14 +18,14 @@ export class AuthService {
 
   // todo add types
 
-  login(credentials: any): Observable<any> {
+  login(credentials: UserSignIn): Observable<any> {
     return this.httpClient.post(AUTH_API + 'signin', {
       username: credentials.username,
       password: credentials.password
     }, httpOptions)
   }
 
-  register(user: any): Observable<any> {
+  register(user: UserSignUpForm): Observable<any> {
     return this.httpClient.post(AUTH_API + 'signup', {
       username: user.username,
       email: user.email,
