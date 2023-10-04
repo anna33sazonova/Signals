@@ -13,7 +13,7 @@ export class RegisterComponent {
 
   submitted = false;
   signUpFailed = false;
-  errorMessage = '';
+  message = '';
 
   constructor(private formBuilder: FormBuilder, private auth: AuthService) {
   }
@@ -50,7 +50,7 @@ export class RegisterComponent {
         this.signUpFailed = false;
       },
       err => {
-        this.errorMessage = err.error.message;
+        this.message = err.error.message;
         this.signUpFailed = true;
       }
     )
