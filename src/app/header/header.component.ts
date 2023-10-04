@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
-import {UserLoginForm} from "../data.model";
+import {UserSignInForm} from "../data.model";
 import {AuthService} from "../common/auth.service";
 import {Router} from "@angular/router";
+import {TokenStorageService} from "../common/token-storage.service";
 
 @Component({
   selector: 'app-header',
@@ -11,10 +12,12 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent {
 
-  constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
+  @Input() isLoggedIn!: boolean;
 
-  connectionForm = this.fBuilder.group<UserLoginForm>({
-    name: new FormControl('', { validators: [Validators.required] , nonNullable: true}),
+  constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, private token: TokenStorageService) {}
+
+  connectionForm = this.fBuilder.group<UserSignInForm>({
+    username: new FormControl('', { validators: [Validators.required] , nonNullable: true}),
     password: new FormControl('', { validators: [Validators.required] , nonNullable: true})
   });
 
@@ -26,6 +29,9 @@ export class HeaderComponent {
     console.log('submit');
   }
 
-
-
+  logout(): void {
+    this.token.signOut();
+    window.location.reload();
+    //  this.router.navigate(['']);
+  }
 }

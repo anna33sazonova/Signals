@@ -2,7 +2,7 @@
   <div class="logo-title"><p>Signals</p></div>
   <div class="nav-links">
   <span class="link">  <a class="description" routerLink="/">Home</a></span>
-  <span class="link">  <a class="description" routerLink="/info">Info</a></span>
+  <span class="link" *ngIf="isLoggedIn">  <a class="description" routerLink="/info">Info</a></span>
     <!-- display this button for unregistered user -->
     <span class="link">  <a class="description" routerLink="/register">Sign Up</a></span>
     <!-- display sign in button for unregistered user
@@ -10,7 +10,8 @@
     add sing out methode to remove token
     isLoggedIn - signal
     -->
-    <button class="btn" (click)="dialog.showModal()">Sign in / Sign out</button>
+    <button *ngIf="isLoggedIn" class="btn" (click)="logout()">Sign out</button>
+    <button class="btn" (click)="dialog.showModal()">Sign in</button>
   </div>
 </div>
 <dialog #dialog>
