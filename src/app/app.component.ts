@@ -22,8 +22,4 @@ export class AppComponent implements OnInit {
     }
   }
 
-  logout(): void {
-    this.token.signOut();
-    window.location.reload();
-  }
 }
