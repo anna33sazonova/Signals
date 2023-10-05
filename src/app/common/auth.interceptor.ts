@@ -11,8 +11,6 @@ import {TokenStorageService} from "./token-storage.service";
 
 const TOKEN_HEADER_KEY = 'x-access-token';
 
-// todo add types
-
 @Injectable()
 
 export class AuthInterceptor implements HttpInterceptor {
