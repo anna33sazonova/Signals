@@ -36,6 +36,7 @@ export class HeaderComponent {
         }
       );
     }
+    this.connectionForm.reset();
     //  this.router.navigate(['info']);
   }
 
