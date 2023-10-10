@@ -11,7 +11,7 @@
     isLoggedIn - signal
     -->
     <button *ngIf="isLoggedIn" class="btn" (click)="logout()">Sign out</button>
-    <button class="btn" (click)="dialog.showModal()">Sign in</button>
+    <button *ngIf="!isLoggedIn" class="btn" (click)="dialog.showModal()">Sign in</button>
   </div>
 </div>
 <dialog #dialog>

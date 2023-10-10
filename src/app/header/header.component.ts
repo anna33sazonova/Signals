@@ -4,6 +4,7 @@ import {UserSignInForm} from "../data.model";
 import {AuthService} from "../common/auth.service";
 import {Router} from "@angular/router";
 import {TokenStorageService} from "../common/token-storage.service";
+import {UserService} from "../common/user.service";
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class HeaderComponent {
 
   message!: string;
 
-  constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, private token: TokenStorageService) {
+  constructor(private fBuilder: FormBuilder, private authService: AuthService, private router: Router, private token: TokenStorageService, private userService: UserService) {
   }
 
   connectionForm = this.fBuilder.group<UserSignInForm>({
@@ -37,12 +38,17 @@ export class HeaderComponent {
       );
     }
     this.connectionForm.reset();
-    //  this.router.navigate(['info']);
+    //  this.userService.refreshView.next(new Date());
+    window.location.reload();
+    window.location.href='http://localhost:4200/info';
+  //  this.router.navigate(['info']);
   }
 
   logout(): void {
     this.token.signOut();
+    // this.userService.refreshView.next(new Date());
     window.location.reload();
-    //  this.router.navigate(['']);
+    window.location.href='http://localhost:4200/';
+  //  this.router.navigate(['']);
   }
 }

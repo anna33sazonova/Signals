@@ -9,11 +9,12 @@ import {TokenStorageService} from "../common/token-storage.service";
 export class InfoComponent implements OnInit {
 
   //todo add type
-  currentUser: any;
+  currentUser!: any;
 
   constructor(private token: TokenStorageService) {}
 
   ngOnInit(): void {
+    console.log(this.currentUser);
     this.currentUser = this.token.getUser();
   }
 
