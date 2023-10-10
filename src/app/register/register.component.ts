@@ -48,16 +48,18 @@ export class RegisterComponent {
         console.log(data);
         this.submitted = true;
         this.signUpFailed = false;
+        this.message = 'Your registration is successful';
       },
       err => {
         this.message = err.error.message;
         this.signUpFailed = true;
       }
-    )
+    );
+    window.location.reload();
+    window.location.href='http://localhost:4200/';
   }
 
   onReset() {
     this.registerForm.reset();
   }
-
 }
